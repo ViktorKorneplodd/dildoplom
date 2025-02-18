@@ -29,10 +29,10 @@ nav a {
 
 /* Секция hero */
 .hero {
-    background-image: url('~/images/bg.jpg'); /* Фоновое изображение */
+    background-image: url('~/images/preview1.jpg'); /* Фоновое изображение */
     background-size: cover;
     background-position: center;
-    height: 300px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,7 +56,7 @@ nav a {
     margin: 30px auto;
     display: flex;
     gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(950px, 1fr));
     flex-direction: column;
     align-items: center;
 
@@ -95,7 +95,7 @@ footer {
 }
 .product-card {
     display: flex;
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
     padding: 10px;
     background-color: #fff;
     width: 850px; /*ширина*/
@@ -130,7 +130,7 @@ footer {
 .product-title {
     font-size: 16px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     
     
 }
@@ -159,6 +159,64 @@ footer {
     transition: background-color 0.3s ease;
 }
 
+.product-exit {
+    background-color: #2196f3;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-size: 30px
+}
+
     .product-btn:hover {
         background-color: #1976d2;
     }
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+.flash-messages {
+    position: fixed;
+    bottom: 20px; /* Отступ от низа */
+    right: 20px; /* Отступ от правого края */
+    z-index: 9999; /* Убедитесь, что сообщения поверх других элементов */
+}
+
+.flash-message {
+    background-color: #f8d7da; /* Цвет фона (можно изменить) */
+    color: #721c24; /* Цвет текста (можно изменить) */
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #f5c6cb; /* Цвет границы (можно изменить) */
+    border-radius: 5px;
+    animation: slide-in 0.5s forwards, fade-out 0.5s 3s forwards; /* Анимация появления и исчезновения */
+}
+
+/* Анимация появления */
+@keyframes slide-in {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Анимация исчезновения */
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

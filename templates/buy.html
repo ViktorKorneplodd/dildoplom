@@ -1,11 +1,13 @@
 <!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title style="text-align: left;">DIPLOM - Интернет-магазин</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    
+
     <style>
         body {
             display: flex;
@@ -47,8 +49,7 @@
     </style>
 </head>
 <body>
-
-    <html lang="ru">
+html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,8 +63,6 @@
     </style>
     <title>Центрированное меню</title>
 </head>
-<body>
-
 <header class="header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -101,63 +100,10 @@
         </div>
     </nav>
 </header>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
-    <link rel="stylesheet" href="static/style.css">
-    <main>
-        <section class="hero">
-            <h1>Добро пожаловать в Osvencim Shop!</h1>
-            <p>Здесь вы найдете все необходимое.</p>
-        </section>
-    
-        <section class="products">
-            <h2>Популярные товары</h2>
-            <div class="product-card-container">
-                {% if товары %}
-    {% for товар in товары %}
-        <div class="product-card">
-            <div class="product-image">
-                <img src="" alt="{{ товар.Название }}">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">{{ товар.Название }}</h3>
-                <p class="product-description">{{ товар.Описание }}</p>
-                <div class="product-price">Цена: {{ товар.Цена }} руб.</div>
-                <form action="{{ url_for('add_to_cart', tovar_id=товар.id) }}" method="post">
-    <button type="submit" class ="product-btn">Добавить в корзину</button>
-</form>
-            </div>
-        </div>
-    {% endfor %}
-{% else %}
-    <p>Нет доступных товаров.</p>
-{% endif %}
-
-<div id="flash-messages" class="flash-messages">
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <div class="flash-message">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-</div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer bg-light text-muted">
+<footer class="footer bg-light text-muted">
         <div class="container text-center">
             &copy;RNDM CREW MELON MUSIC 2025 - DIPLOM. Все права защищены.
         </div>
     </footer>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
