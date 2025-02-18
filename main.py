@@ -82,6 +82,25 @@ def add_to_cart(tovar_id):
 
     return redirect(url_for('cart'))
 
+
+@app.route('/remove_from_cart/<int:tovar_id>', methods=['POST'])
+def remove_from_cart(tovar_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))  # Если пользователь не авторизован, перенаправляем на страницу логина
+
+    user_id = session['user_id']
+    # Найдите товар в корзине пользователя и удалите его
+    cart_item = Cart.query.filter_by(klient_id=user_id, tovar_id=tovar_id).first()
+
+    if cart_item:
+        db.session.delete(cart_item)
+        db.session.commit()  # Сохраняем изменения в базе данных
+        flash('Товар был удален из корзины.')
+    else:
+        flash('Товар не найден в корзине.')
+
+    return redirect(url_for('cart'))  # 
+
 @app.route('/cart', methods = ['GET'])
 def cart():
     if 'user_id' not in session:
