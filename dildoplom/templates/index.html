@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="text-align: left;">DIPLOM - Интернет-магазин</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        footer {
+            margin-top: auto;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            z-index: 1000; /* Чтобы шапка была выше других элементов */
+        }
+        .content {
+            margin-top: 60px; /* Отступ для контента под фиксированной шапкой */
+        }
+        .product-card-container {
+            display: flex;
+            flex-direction: column; /* Вертикальное расположение карточек */
+            align-items: flex-end; /* Центрирование карточек */
+            width: 100%; /* Ширина контейнера 100% */
+        }
+
+        .product-card {
+            width: 100%; /* Карточка занимает всю ширину */
+            max-width: 1200px; /* Максимальная ширина карточки */
+            margin: 20px 0; /* Отступы между карточками */
+            display: flex; /* Используем flex для карточки */
+            border: 1px solid #ddd; /* Граница карточки */
+            border-radius: 4px; /* Закругленные углы */
+            overflow: hidden; /* Скрытие переполнения */
+            background-color: #fff; /* Фоновый цвет карточки */
+        }
+    </style>
+</head>
+<body>
+
+    <html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .navbar-nav {
+            display: flex;
+            justify-content: center; /* Центрируем элементы */
+            width: 100%; /* Задаем ширину 100% */
+        }
+    </style>
+    <title>Центрированное меню</title>
+</head>
+<body>
+
+<header class="header"> 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+        <a class="navbar-brand" href="#">DIPLOM</a> 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> 
+            <span class="navbar-toggler-icon"></span> 
+        </button> 
+        <div class="collapse navbar-collapse" id="navbarNav"> 
+            <ul class="navbar-nav mx-auto"> <!-- Используйте mx-auto для центрирования -->
+                <li class="nav-item"> 
+                    <a class="nav-link" href="/">Главная</a> 
+                </li> 
+                <li class="nav-item"> 
+                    <a class="nav-link" href="/katalog">Каталог</a> 
+                </li> 
+                <li class="nav-item"> 
+                    <a class="nav-link" href="/cart">Корзина</a> 
+                </li> 
+                <li class="nav-item"> 
+                    <a class="nav-link" href="/contacts">Контакты</a> 
+                </li> 
+            </ul> 
+        </div> 
+    </nav> 
+</header>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+    <link rel="stylesheet" href="static/style.css">
+    <main>
+        <section class="hero">
+            <h1>Добро пожаловать в Osvencim Shop!</h1>
+            <p>Здесь вы найдете все необходимое.</p>
+        </section>
+    
+        <section class="products">
+            <h2>Популярные товары</h2>
+            <div class="product-card-container"> <!-- Добавлен контейнер для карточек -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{{ товар.image }}" alt="{{ товар.Название }}">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">{{ товар.Название }}</h3>
+                        <p class="product-description">{{ товар.Описание }}</p>
+                        <div class="product-price">Цена: {{ товар.Цена }} руб.</div>
+                        <button class="product-btn">Купить</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{{ товар.image }}" alt="{{ товар.Название }}">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">{{ товар.Название }}</h3>
+                        <p class="product-description">{{ товар.Описание }}</p>
+                        <div class="product-price">Цена: {{ товар.Цена }} руб.</div>
+                        <button class="product-btn">Купить</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer bg-light text-muted">
+        <div class="container text-center">
+            &copy;RNDM CREW MELON MUSIC 2025 - DIPLOM. Все права защищены.
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
