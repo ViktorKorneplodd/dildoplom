@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="text-align: left;">DIPLOM - Интернет-магазин</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #fafafa; color: #333; margin: 0; padding: 0; } .container { max-width: 1200px; margin: auto; padding: 2rem; } h2 { font-size: 2.5rem; margin-bottom: 1rem; } p { line-height: 1.6; } a.btn { display: inline-block; text-decoration: none; border-radius: 5px; padding: 0.75rem 1.5rem; transition: all 0.3s ease-in-out; } a.btn-secondary { background-color: #6c757d; color: white; } a.btn-secondary:hover { background-color: #5a6268; } button.btn { cursor: pointer; border-radius: 5px; padding: 0.75rem 1.5rem; font-weight: bold; transition: all 0.3s ease-in-out; } button.btn-primary { background-color: #007bff; color: white; } button.btn-primary:hover { background-color: #0056b3; } img.product-image { width: 40%; height: 40%; object-fit: cover; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-top: 1rem; } .product-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; } .product-header { width: 50%; } .product-price { font-size: 1.5rem; font-weight: bold; color: #dc3545; } .reviews-section { margin-top: 2rem; } ul.list-group { list-style-type: none; padding-left: 0; } li.list-group-item { background-color: #fff; border: 1px solid #dee2e6; border-radius: 5px; padding: 1rem; margin-bottom: 1rem; } .review-buttons form button { font-size: 1rem; padding: 0.5rem 1rem; border-radius: 5px; transition: all 0.3s ease-in-out; } .review-buttons form button.active-like { background-color: #28a745; color: white; } .review-buttons form button.active-dislike { background-color: #dc3545; color: white; }
+    </style>
+    <title>Центрированное меню</title>
+</head>
+<header class="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">DIPLOM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/katalog">Каталог</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart">Корзина</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contacts">Контакты</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <link rel="stylesheet" href="static/style.css">
+                    {% if 'username' in session %}
+                    <p>Добро пожаловать, {{ session['username'] }}!</p>
+                    <button class="btn btn-primary" onclick="location.href = '{{ url_for('logout') }}'">Выйти</button>
+                    {% else %}
+                    <button class="btn btn-primary" onclick="location.href = '{{ url_for('login') }}'">Вход</button>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<style>
+ .pc-container {
+  max-width: 1400px;
+  margin: 30px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Основной блок товара */
+.pc-product-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+/* Заголовок и цена */
+.pc-product-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.pc-product-header h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.pc-product-price {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2a9d8f;
+  margin-left: 20px;
+  white-space: nowrap;
+}
+
+/* Отступ под средней оценкой */
+.pc-product-card > p {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Изображение */
+.pc-product-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  margin-bottom: 25px;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* Описание */
+.pc-product-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* Кнопка "Добавить в корзину" */
+.pc-product-form button.btn-primary {
+  background-color: #2a9d8f;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.pc-product-form button.btn-primary:hover {
+  background-color: #21867a;
+}
+
+/* Блок отзывов */
+.pc-reviews-section {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 25px 20px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.05);
+}
+
+/* Заголовок отзывов */
+.pc-reviews-section h3 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #264653;
+}
+
+/* Подзаголовок с пояснением */
+.pc-reviews-section p em {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* Отдельный отзыв */
+.pc-list-group-item {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  padding: 15px 20px;
+}
+/* Кнопки лайк/дизлайк */
+.pc-review-buttons {
+  margin-top: 12px;
+  gap: 10px;
+  display: flex;
+}
+/* Активные кнопки */
+.btn-outline-success.pc-active-like {
+  background-color: #2a9d8f;
+  color: #fff;
+  border-color: #2a9d8f;
+}
+.btn-outline-danger.pc-active-dislike {
+  background-color: #e76f51;
+  color: #fff;
+  border-color: #e76f51;
+}
+.btn-sm {
+  min-width: 60px;
+}
+</style>
+<div class="pc-container">
+
+  <div class="pc-product-card">
+    <div class="pc-product-header">
+      <h2>{{ товар.Название }}</h2>
+      <div class="pc-product-price">{{ товар.Цена }} руб.</div>
+    </div>
+    <p>Средняя оценка: <strong>{{ avg_rating }} / 5</strong></p>
+    <img src="{{ товар.image_url }}" alt="{{ товар.Название }}" class="pc-product-image">
+    <p class="pc-product-description">{{ товар.Описание }}</p>
+    <form action="{{ url_for('add_to_cart', tovar_id=товар.id) }}" method="POST" class="pc-product-form">
+      <button type="submit" class="btn btn-primary">Добавить в корзину</button>
+    </form>
+  </div>
+
+  <div class="pc-reviews-section mt-5">
+    <h3>Отзывы покупателей</h3>
+    <p><em>Оставить отзыв можно только после покупки товара.</em></p>
+
+    {% if отзывы %}
+      <ul class="list-group">
+        {% for отзыв in отзывы %}
+          <li class="pc-list-group-item" id="review-{{ отзыв.id }}">
+            <p><strong>Оценка:</strong> {{ отзыв.Оценка }} / 5</p>
+            <p>{{ отзыв.Содержание }}</p>
+            <div class="pc-review-buttons d-flex gap-2">
+              {% set user_vote = None %}
+              {% for vote in отзыв.votes %}
+                {% if vote.id_klient == session.get('user_id') %}
+                  {% set user_vote = vote.vote.name %}
+                {% endif %}
+              {% endfor %}
+              <form action="{{ url_for('vote_review', review_id=отзыв.id, vote_type='like') }}" method="post" style="margin:0;">
+                <button type="submit" class="btn btn-sm btn-outline-success {% if user_vote == 'like' %}pc-active-like{% endif %}">👍 {{ отзыв.likes or 0 }}</button>
+              </form>
+              <form action="{{ url_for('vote_review', review_id=отзыв.id, vote_type='dislike') }}" method="post" style="margin:0;">
+                <button type="submit" class="btn btn-sm btn-outline-danger {% if user_vote == 'dislike' %}pc-active-dislike{% endif %}">👎 {{ отзыв.dislikes or 0 }}</button>
+              </form>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Пока нет отзывов для этого товара.</p>
+    {% endif %}
+  </div>
+
+</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<footer class="footer bg-light text-muted">
+        <div class="container text-center">
+            &copy;RNDM CREW MELON MUSIC 2025 - DIPLOM. Все права защищены.
+        </div>
+    </footer>
+</body>
+</html>
