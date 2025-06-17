@@ -7,50 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title style="text-align: left;">DIPLOM - Интернет-магазин</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        footer {
-            margin-top: auto;
-        }
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: #f8f9fa;
-            padding: 10px 20px;
-            z-index: 1000; /* Чтобы шапка была выше других элементов */
-        }
-        .content {
-            margin-top: 60px; /* Отступ для контента под фиксированной шапкой */
-        }
-        .product-card-container {
-            display: flex;
-            flex-direction: column; /* Вертикальное расположение карточек */
-            align-items: flex-end; /* Центрирование карточек */
-            width: 75%; /* Ширина контейнера 100% */
-        }
-
-        .product-card {
-            width: 100%; /* Карточка занимает всю ширину */
-            max-width: 1200px; /* Максимальная ширина карточки */
-            margin: 20px 0; /* Отступы между карточками */
-            display: flex; /* Используем flex для карточки */
-            border: 1px solid #ddd; /* Граница карточки */
-            border-radius: 4px; /* Закругленные углы */
-            overflow: hidden; /* Скрытие переполнения */
-            background-color: #fff; /* Фоновый цвет карточки */
-        }
-
     </style>
 </head>
 <body>
-html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -97,51 +56,193 @@ html lang="ru">
         </div>
     </nav>
 </header>
+<style>
+  .container {
+  max-width: 1400px;
+  margin: 30px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Основной блок товара */
+.product-container {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+  padding: 20px;
+  /* Добавим нижний отступ, чтобы отделить от следующего блока */
+  margin-bottom: 40px;
+}
+
+/* Заголовок и цена */
+.product-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.product-header h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2a9d8f;
+  margin-left: 20px;
+  white-space: nowrap;
+}
+
+/* Отступ под средней оценкой */
+.product-container > p {
+  margin-top: 0;
+  margin-bottom: 20px; /* добавлен отступ */
+}
+
+/* Изображение */
+.product-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 25px; /* увеличен отступ */
+}
+
+/* Описание */
+.product-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* Кнопка "Добавить в корзину" */
+form button.btn-primary {
+  background-color: #2a9d8f;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  /* Отступ сверху, чтобы кнопка не прилипала к описанию */
+  margin-top: 10px;
+}
+
+form button.btn-primary:hover {
+  background-color: #21867a;
+}
+
+/* Блок отзывов */
+.reviews-section {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 25px 20px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.05);
+}
+
+/* Заголовок отзывов */
+.reviews-section h3 {
+  font-weight: 700;
+  margin-bottom: 15px; /* увеличен отступ */
+  color: #264653;
+}
+
+/* Подзаголовок с пояснением */
+.reviews-section p em {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  display: block; /* чтобы отступ работал корректно */
+}
+
+/* Отдельный отзыв */
+.list-group-item {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 15px; /* увеличен отступ между отзывами */
+  padding: 15px 20px;
+}
+
+/* Кнопки лайк/дизлайк */
+.review-buttons {
+  margin-top: 12px; /* небольшой отступ сверху */
+  gap: 10px; /* расстояние между кнопками */
+  display: flex;
+}
+
+/* Активные кнопки */
+.btn-outline-success.active-like {
+  background-color: #2a9d8f;
+  color: #fff;
+  border-color: #2a9d8f;
+}
+
+.btn-outline-danger.active-dislike {
+  background-color: #e76f51;
+  color: #fff;
+  border-color: #e76f51;
+}
+
+.btn-sm {
+  min-width: 60px;
+}
+
+</style>
+
 <div class="container">
 
-        <div class="product-container">
-            <div class="product-header">
-    <h2>{{ товар.Название }}</h2>
-                <p>Средняя оценка: {{ avg_rating }} / 5</p>
-    <div class="product-price">{{ товар.Цена }} руб.</div>
+  <div class="product-container">
+    <div class="product-header">
+      <h2>{{ товар.Название }}</h2>
+      <div class="product-price">{{ товар.Цена }} руб.</div>
+    </div>
+    <p>Средняя оценка: <strong>{{ avg_rating }} / 5</strong></p>
+    <img src="{{ товар.image_url }}" alt="{{ товар.Название }}" class="product-image">
+    <p class="product-description">{{ товар.Описание }}</p>
     <form action="{{ url_for('add_to_cart', tovar_id=товар.id) }}" method="POST">
-        <button type="submit" class="btn btn-primary">Добавить в корзину</button>
+      <button type="submit" class="btn btn-primary">Добавить в корзину</button>
     </form>
-</div>
-<img src="{{ товар.image_url }}" alt="{{ товар.Название }}" class="product-image">
-            <p class="product-description">{{ товар.Описание }}</p>
-        </div>
-    <div class="reviews-section mt-5">
-        <h3>Отзывы покупателей</h3>
-        <p><em>Оставить отзыв можно только после покупки товара.</em></p>
-        {% if отзывы %}
-            <ul class="list-group">
-    {% for отзыв in отзывы %}
-        <li class="list-group-item" id="review-{{ отзыв.id }}">
+  </div>
+
+  <div class="reviews-section mt-5">
+    <h3>Отзывы покупателей</h3>
+    <p><em>Оставить отзыв можно только после покупки товара.</em></p>
+
+    {% if отзывы %}
+      <ul class="list-group">
+        {% for отзыв in отзывы %}
+          <li class="list-group-item" id="review-{{ отзыв.id }}">
             <p><strong>Оценка:</strong> {{ отзыв.Оценка }} / 5</p>
             <p>{{ отзыв.Содержание }}</p>
             <div class="review-buttons d-flex gap-2">
-                {% set user_vote = None %}
-  {% for vote in отзыв.votes %}
-    {% if vote.id_klient == session.get('user_id') %}
-      {% set user_vote = vote.vote.name %}
+              {% set user_vote = None %}
+              {% for vote in отзыв.votes %}
+                {% if vote.id_klient == session.get('user_id') %}
+                  {% set user_vote = vote.vote.name %}
+                {% endif %}
+              {% endfor %}
+              <form action="{{ url_for('vote_review', review_id=отзыв.id, vote_type='like') }}" method="post" style="margin:0;">
+                <button type="submit" class="btn btn-sm btn-outline-success {% if user_vote == 'like' %}active-like{% endif %}">👍 {{ отзыв.likes or 0 }}</button>
+              </form>
+              <form action="{{ url_for('vote_review', review_id=отзыв.id, vote_type='dislike') }}" method="post" style="margin:0;">
+                <button type="submit" class="btn btn-sm btn-outline-danger {% if user_vote == 'dislike' %}active-dislike{% endif %}">👎 {{ отзыв.dislikes or 0 }}</button>
+              </form>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Пока нет отзывов для этого товара.</p>
     {% endif %}
-  {% endfor %}
-      <form action="{{ url_for('vote_review', review_id=отзыв.id, vote_type='like') }}" method="post" style="margin:0;">
-        <button type="submit" class="btn btn-sm btn-outline-success {% if user_vote == 'like' %}active-like{% endif %}">👍 {{ отзыв.likes or 0 }}</button>
-      </form>
-      <form action="{{ url_for('vote_review', review_id=отзыв.id, vote_type='dislike') }}" method="post" style="margin:0;">
-        <button type="submit" class="btn btn-sm btn-outline-danger {% if user_vote == 'dislike' %}active-dislike{% endif %}">👎 {{ отзыв.dislikes or 0 }}</button>
-      </form>
-    </div>
-        </li>
-    {% endfor %}
-</ul>
-        {% else %}
-            <p>Пока нет отзывов для этого товара.</p>
-        {% endif %}
-    </div>
-    </div>
+  </div>
+
+</div>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
